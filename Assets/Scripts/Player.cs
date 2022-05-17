@@ -49,16 +49,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    protected void Jump()
+    protected virtual void Jump()
     {
 
         if (Input.GetButtonDown("Jump") && jump < maxJump)
         {
-            Vector2 vel = rb.velocity;
-            vel.y = 0;
-            rb.velocity = vel;
-            //transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
-            rb.AddRelativeForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
+            rb.velocity = jumpDirection * jumpForce;
             jump++;
             isJumping = true;
         }
