@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] protected float rayCastDistance;
     [SerializeField] protected int maxJump;
     [SerializeField] protected int jump;
-    [SerializeField] protected LayerMask suelo;
+    [SerializeField] protected LayerMask graund;
 
 
     protected virtual void Start()
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     protected void Update()
     {
         Movement();
-        Jump(maxJump);
+        Jump();
     }
 
     protected virtual void Movement()
@@ -45,9 +45,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    protected void Jump(int maxJump)
+    protected void Jump()
     {
-        
+
         if (Input.GetButtonDown("Jump") && jump < maxJump)
         {
             Vector2 vel = rb.velocity;
@@ -59,9 +59,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, suelo))
+        if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
         {
             jump = 0;
         }
