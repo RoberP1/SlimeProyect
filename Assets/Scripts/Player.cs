@@ -8,21 +8,23 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] protected float speed;
+    protected bool isRotated;
 
     [Header("Jump")]
     [SerializeField] protected float jumpForce;
     [SerializeField] protected float rayCastDistance;
     [SerializeField] protected int maxJump;
     [SerializeField] protected int jump;
+    [SerializeField] protected Vector2 jumpDirection = new Vector2(0,1);
     [SerializeField] protected LayerMask graund;
-
+    [SerializeField]protected bool isJumping;
 
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         Movement();
         Jump();
@@ -36,26 +38,25 @@ public class Player : MonoBehaviour
         if (inputX < 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
+            isRotated = true;
 
         }
         if (inputX > 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            isRotated = false;
 
         }
     }
 
-    protected void Jump()
+    protected virtual void Jump()
     {
 
         if (Input.GetButtonDown("Jump") && jump < maxJump)
         {
-            Vector2 vel = rb.velocity;
-            vel.y = 0;
-            rb.velocity = vel;
-            //transform.Translate(Vector3.up * jumpForce * Time.deltaTime);
-            rb.AddRelativeForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.velocity = jumpDirection * jumpForce;
             jump++;
+            isJumping = true;
         }
     }
 
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
         if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
         {
             jump = 0;
+            isJumping = false;
         }
     }
 
