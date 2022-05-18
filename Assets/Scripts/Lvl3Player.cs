@@ -27,7 +27,6 @@ public class Lvl3Player : Lvl2Player
     {
         if (Input.GetButtonDown("Dash") && candash && !isDashing)
         {
-            //rb.AddRelativeForce(transform.right * dashImpulse, ForceMode2D.Impulse);
             StartCoroutine(DashCD(dashCD));
             StartCoroutine(DashTime(dashTime));
         }
