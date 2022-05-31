@@ -11,16 +11,19 @@ public class Lvl3Player : Lvl2Player
     [SerializeField] protected float dashTime;
     [SerializeField] protected bool candash;
     [SerializeField] protected bool isDashing;
+    int dashID;
 
     protected override void Start()
     {
         base.Start();
         gravityStore = rb.gravityScale;
+        dashID = Animator.StringToHash("Dash");
     }
     protected override void Update()
     {
         base.Update();
         Dash();
+        
     }
 
     private void Dash()
@@ -28,7 +31,9 @@ public class Lvl3Player : Lvl2Player
         if (Input.GetButtonDown("Dash") && candash && !isDashing)
         {
             StartCoroutine(DashCD(dashCD));
-            StartCoroutine(DashTime(dashTime));
+            isDashing = true;
+            animator.SetBool(dashID, isDashing);
+            //StartCoroutine(DashTime(dashTime));
         }
         if (isDashing)
         {
@@ -41,6 +46,18 @@ public class Lvl3Player : Lvl2Player
         candash = false;
         yield return new WaitForSeconds(dashCD);
         candash = true;
+    }
+    public void DashFinish()
+    {
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = gravityStore;
+        isDashing = false;
+        animator.SetBool(dashID, isDashing);
+    }
+    public override void Knocked()
+    {
+        base.Knocked();
+        DashFinish();
     }
     public IEnumerator DashTime(float dashTime)
     {

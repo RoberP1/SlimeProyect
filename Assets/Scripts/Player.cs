@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    protected Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     [Header("Movement")]
     [SerializeField] protected float speed;
-    protected bool isRotated;
+    public bool isRotated;
+    public bool knocked;
 
     [Header("Jump")]
     [SerializeField] protected float jumpForce;
@@ -17,24 +18,50 @@ public class Player : MonoBehaviour
     [SerializeField] protected int jump;
     [SerializeField] protected Vector2 jumpDirection = new Vector2(0,1);
     [SerializeField] protected LayerMask graund;
-    [SerializeField]protected bool isJumping;
+    [SerializeField] protected bool isJumping;
+
+    [Header("Animation")]
+    [SerializeField] protected Animator animator;
+    int walkID;
+    int jumpID;
+    int hitID;
+
 
     protected virtual void Start()
     {
+        animator = GetComponent<Animator>();
+        walkID = Animator.StringToHash("Walk");
+        jumpID = Animator.StringToHash("Jump");
+        hitID = Animator.StringToHash("Hit");
+
         rb = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Update()
     {
+        //Debug.Log("knocked " + knocked);
+        if (knocked)
+        {
+            GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+            return;
+        }
         Movement();
         Jump();
+        
     }
 
     protected virtual void Movement()
     {
         float inputX = Input.GetAxis("Horizontal");
-
-        transform.Translate(transform.right * inputX * speed * Time.deltaTime);
+        if(inputX != 0)
+        {
+            animator.SetBool(walkID, true);
+            transform.Translate(transform.right * inputX * speed * Time.deltaTime);
+        }
+        else
+        {
+            animator.SetBool(walkID, false);
+        }
         if (inputX < 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -45,6 +72,7 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             isRotated = false;
+   
 
         }
     }
@@ -54,9 +82,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && jump < maxJump)
         {
+            
             rb.velocity = jumpDirection * jumpForce;
             jump++;
             isJumping = true;
+            animator.SetBool(jumpID, isJumping);
         }
     }
 
@@ -64,8 +94,12 @@ public class Player : MonoBehaviour
     {
         if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
         {
+            Debug.Log("Graunded");
             jump = 0;
             isJumping = false;
+            animator.SetBool(jumpID, isJumping);
+            HitFinish();
+            
         }
     }
 
@@ -73,5 +107,17 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(transform.position, Vector2.down * rayCastDistance);
+    }
+    public virtual void Knocked()
+    {
+        knocked = true;
+        animator.SetBool(hitID, true);
+        animator.SetBool(walkID, false);
+    }
+    public virtual void HitFinish()
+    {
+        knocked = false;
+        animator.SetBool(hitID, false);
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 }

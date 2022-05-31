@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lvl4Player : Lvl3Player
 {
-    
+    [Header("WallGrabbing")]
     protected bool canGrab;
     [SerializeField] protected Transform wallGrabPoint;
     [SerializeField] protected bool IsGrabbing;
