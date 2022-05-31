@@ -43,7 +43,8 @@ public class Player : MonoBehaviour
 
     protected virtual void Update()
     {
-        //Debug.Log("knocked " + knocked);
+        
+
         if (knocked)
         {
             GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
@@ -96,13 +97,7 @@ public class Player : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
-        {
-            jump = 0;
-            isJumping = false;
-            animator.SetBool(jumpID, isJumping);
-            HitFinish(); 
-        }
+        
 
         if (collision.gameObject.CompareTag("Pinchos"))
         {
@@ -110,6 +105,22 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("LevelDisgn");
         }
     }
+    protected virtual void OnCollisionStay2D(Collision2D collision)
+    {
+        IsGraunded();
+    }
+
+    private void IsGraunded()
+    {
+        if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
+        {
+            jump = 0;
+            isJumping = false;
+            animator.SetBool(jumpID, isJumping);
+            HitFinish();
+        }
+    }
+
     //scriptableobject
     protected virtual void SetPlayer() //sets all variables from the scriptableObject
     {
