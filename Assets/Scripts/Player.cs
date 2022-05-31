@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -100,8 +101,13 @@ public class Player : MonoBehaviour
             jump = 0;
             isJumping = false;
             animator.SetBool(jumpID, isJumping);
-            HitFinish();
-            
+            HitFinish(); 
+        }
+
+        if (collision.gameObject.CompareTag("Pinchos"))
+        {
+            // Ta Mal escrito, pero no se si puedo cambiarlo sin que pase algo malo en el git
+            SceneManager.LoadScene("LevelDisgn");
         }
     }
     //scriptableobject

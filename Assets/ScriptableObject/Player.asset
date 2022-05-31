@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   speed: 10
-  jumpForce: 12
+  jumpForce: 16
   rayCastDistance: 1.1
   maxJump: 1
   jump: 0
