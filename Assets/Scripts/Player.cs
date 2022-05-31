@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
+    [SerializeField] protected PlayerScriptableObject playerScriptableObject;
 
     [Header("Movement")]
     [SerializeField] protected float speed;
@@ -35,6 +36,8 @@ public class Player : MonoBehaviour
         hitID = Animator.StringToHash("Hit");
 
         rb = GetComponent<Rigidbody2D>();
+
+        SetPlayer();
     }
 
     protected virtual void Update()
@@ -94,7 +97,6 @@ public class Player : MonoBehaviour
     {
         if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
         {
-            Debug.Log("Graunded");
             jump = 0;
             isJumping = false;
             animator.SetBool(jumpID, isJumping);
@@ -102,12 +104,25 @@ public class Player : MonoBehaviour
             
         }
     }
+    //scriptableobject
+    protected virtual void SetPlayer() //sets all variables from the scriptableObject
+    {
+        speed = playerScriptableObject.speed;
+        jumpForce = playerScriptableObject.jumpForce;
+        rayCastDistance = playerScriptableObject.rayCastDistance;
+        maxJump = playerScriptableObject.maxJump;
+        jump = playerScriptableObject.jump;
+        graund = playerScriptableObject.graund;
+    }
 
+    //draw line
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(transform.position, Vector2.down * rayCastDistance);
     }
+
+    //animation events
     public virtual void Knocked()
     {
         knocked = true;

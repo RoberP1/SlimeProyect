@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  playerScriptableObject: {fileID: 11400000, guid: 5a7b30feceb17214c8ec0c481762df56, type: 2}
   speed: 10
   isRotated: 0
   knocked: 0
