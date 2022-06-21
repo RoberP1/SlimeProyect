@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,IPlayer
 {
     public Rigidbody2D rb;
     [SerializeField] protected PlayerScriptableObject playerScriptableObject;
@@ -43,8 +43,6 @@ public class Player : MonoBehaviour
 
     protected virtual void Update()
     {
-        
-
         if (knocked)
         {
             GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
@@ -94,11 +92,16 @@ public class Player : MonoBehaviour
             animator.SetBool(jumpID, isJumping);
         }
     }
+    protected void IsGraunded()
+    {       
+        jump = 0;
+        isJumping = false;
+        animator.SetBool(jumpID, isJumping);
+        HitFinish();
+    }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        
-
         if (collision.gameObject.CompareTag("Pinchos"))
         {
             // Ta Mal escrito, pero no se si puedo cambiarlo sin que pase algo malo en el git
@@ -107,20 +110,19 @@ public class Player : MonoBehaviour
     }
     protected virtual void OnCollisionStay2D(Collision2D collision)
     {
-        IsGraunded();
-    }
-
-    private void IsGraunded()
-    {
         if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
         {
-            jump = 0;
-            isJumping = false;
-            animator.SetBool(jumpID, isJumping);
-            HitFinish();
+            IsGraunded();
         }
     }
-
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        ICollectionable collectionable = collision.GetComponent<ICollectionable>();
+        if (collectionable != null)
+        {
+            collectionable.Collect();
+        }
+    }
     //scriptableobject
     protected virtual void SetPlayer() //sets all variables from the scriptableObject
     {
@@ -151,5 +153,22 @@ public class Player : MonoBehaviour
         knocked = false;
         animator.SetBool(hitID, false);
         GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public void SlimeActive(float force)
+    {
+        rb.velocity = Vector2.up * force;
+    }
+
+    public void SlimeDamage(float DamageForceX,float DamageForceY)
+    {
+        Knocked();
+        rb.velocity = (isRotated) ? new Vector2(DamageForceX, DamageForceY) : new Vector2(-DamageForceX, DamageForceY);
+        
+    }
+
+    public void FlyCollition()
+    {
+        IsGraunded();
     }
 }
