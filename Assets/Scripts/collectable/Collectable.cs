@@ -1,14 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Collectable : MonoBehaviour,ICollectionable
 {
-    protected GameManager gameManager;
+    public static event Action<GameObject> collect;
+
     public virtual void Collect()
     {
-        gameManager = FindObjectOfType<GameManager>();
-
+        collect?.Invoke(this.gameObject);
+        //Destroy(gameObject);
     }
+
+
 
 }
