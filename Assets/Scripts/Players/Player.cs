@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,10 @@ public class Player : MonoBehaviour,IPlayer
     int walkID;
     int jumpID;
     int hitID;
+
+
+    public static event Action OnTakeDamage;
+    public static event Action OnHitFinish;
 
 
     protected virtual void Start()
@@ -105,7 +110,9 @@ public class Player : MonoBehaviour,IPlayer
         if (collision.gameObject.CompareTag("Pinchos"))
         {
             // Ta Mal escrito, pero no se si puedo cambiarlo sin que pase algo malo en el git
-            SceneManager.LoadScene("LevelDisgn");
+            //SceneManager.LoadScene("LevelDisgn");
+
+            OnTakeDamage?.Invoke();
         }
     }
     protected virtual void OnCollisionStay2D(Collision2D collision)
@@ -153,6 +160,7 @@ public class Player : MonoBehaviour,IPlayer
         knocked = false;
         animator.SetBool(hitID, false);
         GetComponent<SpriteRenderer>().enabled = true;
+        OnHitFinish?.Invoke();
     }
 
     public void SlimeActive(float force)
@@ -164,7 +172,7 @@ public class Player : MonoBehaviour,IPlayer
     {
         Knocked();
         rb.velocity = (isRotated) ? new Vector2(DamageForceX, DamageForceY) : new Vector2(-DamageForceX, DamageForceY);
-        
+        OnTakeDamage?.Invoke();
     }
 
     public void FlyCollition()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    [Header("Health")]
-    [SerializeField] private int playerHealth;
-    [SerializeField] private int maxPlayerHealth;
-    [SerializeField] private Image[] hearts;
-
+    public static event Action<GameObject,Slider> OnDiamondSliderFull;
     [Header("Diamonds")]
     [SerializeField] private Slider diamondSlider;
     void Start()
     {
         diamondSlider.value = 0;
-        playerHealth = maxPlayerHealth;
     }
 
     // Update is called once per frame
@@ -34,12 +30,19 @@ public class GameManager : MonoBehaviour
             diamondSlider.value++;
             Destroy(diamond.gameObject);
         }
+        else
+        {
+            OnDiamondSliderFull?.Invoke(diamond,diamondSlider);
+        }
+
+
+        /*
         else if (playerHealth < maxPlayerHealth)
         {
             playerHealth++;
             diamondSlider.value = 0;
             Destroy(diamond.gameObject);
-        }
+        }*/
     }
     public void OnEnable()
     {
@@ -47,7 +50,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        Collectable.collect += AddDiamond;
+        Collectable.collect -= AddDiamond;
     }
 
 }
