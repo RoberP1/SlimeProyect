@@ -1,11 +1,13 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Diamond : Collectable
+public class Diamond : MonoBehaviour, ICollectionable
 {
-    public override void Collect()
+    public static event Action<GameObject> collectDiamond;
+    public void Collect()
     {
-        base.Collect();
+        collectDiamond?.Invoke(this.gameObject);
     }
 }
