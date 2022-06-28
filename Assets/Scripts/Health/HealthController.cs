@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class HealthController : MonoBehaviour
 {
     public Heart[] health;
+    [SerializeField] private Slider diamondSlider;
     public bool canTakeDamage = true;
+    public bool diamondSliderFull = false;
     public int MaxHealth;
     public int Health;
 
@@ -31,9 +33,13 @@ public class HealthController : MonoBehaviour
         health[i].state--;
         health[i].SetSprite();
         canTakeDamage = false;
+        if (diamondSliderFull)
+        {
+            Heal();
+        }
 
     }
-    public void Heal(GameObject diamond,Slider slider)
+    public void Heal()
     {
         if (Health >= MaxHealth) return;
         Health++;
@@ -47,8 +53,8 @@ public class HealthController : MonoBehaviour
         }
         health[i].state++;
         health[i].SetSprite();
-        slider.value = 0;
-        Destroy(diamond.gameObject);
+        diamondSlider.value = 0;
+        diamondSliderFull = false;
     }
 
     public void OnEnable()
@@ -56,10 +62,12 @@ public class HealthController : MonoBehaviour
         Player.OnTakeDamage += LoseHealth;
         Player.OnHitFinish += () => canTakeDamage = true;
         GameManager.OnDiamondSliderFull += Heal;
+        GameManager.OnDiamondSliderFull += () => diamondSliderFull = true;
     }
     private void OnDisable()
     {
         Player.OnTakeDamage -= LoseHealth;
+        GameManager.OnDiamondSliderFull -= Heal;
     }
 
 }

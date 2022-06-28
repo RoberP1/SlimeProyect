@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public static event Action<GameObject,Slider> OnDiamondSliderFull;
+    public static event Action OnDiamondSliderFull;
     [Header("Diamonds")]
     [SerializeField] private Slider diamondSlider;
 
@@ -33,28 +33,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddDiamond(GameObject diamond)
+    public void AddDiamond()
     {
         Debug.Log("Aggarro un diamante");
-        
+
         if (diamondSlider.value < diamondSlider.maxValue)
         {
             diamondSlider.value++;
-            Destroy(diamond.gameObject);
         }
         else
         {
-            OnDiamondSliderFull?.Invoke(diamond,diamondSlider);
+            OnDiamondSliderFull?.Invoke();
         }
-
-
-        /*
-        else if (playerHealth < maxPlayerHealth)
-        {
-            playerHealth++;
-            diamondSlider.value = 0;
-            Destroy(diamond.gameObject);
-        }*/
     }
     public void AddLetter(int id)
     {

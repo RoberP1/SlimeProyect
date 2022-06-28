@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Diamond : MonoBehaviour, ICollectionable
 {
-    public static event Action<GameObject> collectDiamond;
+    public static event Action collectDiamond;
     public void Collect()
     {
-        collectDiamond?.Invoke(this.gameObject);
+        collectDiamond?.Invoke();
+        Destroy(gameObject);
     }
 }
