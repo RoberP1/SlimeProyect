@@ -9297,6 +9297,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c88e819a59afb124f93cd9d7995303b3, type: 3}
+--- !u!1001 &920366604
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8884051692673716039, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_Name
+      value: ChangeLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716056, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 100.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.38355204
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884051692673716057, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 330c54ef804924a4aa5c12e180ef08a7, type: 3}
 --- !u!1 &950090053
 GameObject:
   m_ObjectHideFlags: 0
@@ -15073,6 +15134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
+    - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.4853735
+      objectReference: {fileID: 0}
     - target: {fileID: 5713897219584422532, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_Follow
       value: 
@@ -15230,6 +15295,14 @@ PrefabInstance:
     - target: {fileID: 545774884328809550, guid: 408ef60f73ad2bf46aaab7c3da54c801, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812874814050132026, guid: 408ef60f73ad2bf46aaab7c3da54c801, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812874814050132026, guid: 408ef60f73ad2bf46aaab7c3da54c801, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1481823311
       objectReference: {fileID: 0}
     - target: {fileID: 7184605098337052480, guid: 408ef60f73ad2bf46aaab7c3da54c801, type: 3}
       propertyPath: m_Name
