@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class EnemyFly : MonoBehaviour
 {
+    bool flyActive = true;
+    Animator anim;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!flyActive) return;
         IPlayer player = collision.GetComponentInParent<IPlayer>();
         if (player != null)
         {
             player.FlyCollition();
-            Destroy(gameObject);
+            flyActive = false;
+            anim.SetBool("Trigger", true);
+            //Destroy(gameObject);
         }
+    }
+    public void animationFinish()
+    {
+        anim.SetBool("Trigger", false);
+        flyActive = true;
     }
 }
