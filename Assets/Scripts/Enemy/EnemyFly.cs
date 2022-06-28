@@ -6,9 +6,11 @@ public class EnemyFly : MonoBehaviour
 {
     bool flyActive = true;
     Animator anim;
+    private int animTrigger;
     private void Start()
     {
         anim = GetComponent<Animator>();
+        animTrigger = Animator.StringToHash("Trigger");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,8 +20,7 @@ public class EnemyFly : MonoBehaviour
         {
             player.FlyCollition();
             flyActive = false;
-            anim.SetBool("Trigger", true);
-            //Destroy(gameObject);
+            anim.SetBool(animTrigger, true);
         }
     }
     public void animationFinish()
