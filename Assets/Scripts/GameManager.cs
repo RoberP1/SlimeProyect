@@ -62,10 +62,12 @@ public class GameManager : MonoBehaviour
     public void OnEnable()
     {
         Diamond.collectDiamond += AddDiamond;
+        Letter.collectLetter += AddLetter;
     }
     private void OnDisable()
     {
         Diamond.collectDiamond -= AddDiamond;
+        Letter.collectLetter -= AddLetter;
     }
 
 }
