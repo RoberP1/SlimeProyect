@@ -11,6 +11,11 @@ public class EnemySlime : MonoBehaviour
     [SerializeField] float DamageForceX;
     [SerializeField] float DamageForceY;
 
+<<<<<<< Updated upstream
+=======
+    [SerializeField] Player player;
+>>>>>>> Stashed changes
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
