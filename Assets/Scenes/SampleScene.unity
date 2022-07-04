@@ -2425,6 +2425,14 @@ PrefabInstance:
       propertyPath: diamondSlider
       value: 
       objectReference: {fileID: 700589100}
+    - target: {fileID: 6123016660993612051, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625834157743063925, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
 --- !u!1001 &8884051693105849160
