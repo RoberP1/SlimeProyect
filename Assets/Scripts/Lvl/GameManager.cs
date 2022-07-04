@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    
     public static event Action OnDiamondSliderFull;
     [Header("Diamonds")]
     [SerializeField] private Slider diamondSlider;
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     [Header("Letters")]
     [SerializeField] private Color color;
     [SerializeField] private Image[] letters;
+
+    public static event Action OnPause;
     void Start()
     {
         diamondSlider.value = 0;
@@ -30,6 +33,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("r"))
         {
             PlayerPrefs.DeleteAll();
+        }
+        if (Input.GetKeyDown("p"))
+        {
+            OnPause?.Invoke();
         }
     }
 
