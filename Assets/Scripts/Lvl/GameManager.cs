@@ -16,9 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Color color;
     [SerializeField] private Image[] letters;
 
+    [Header("CheckPoints")]
+    [SerializeField] private List<Vector3> Checkpoits = new List<Vector3>();
+
     public static event Action OnPause;
+
     void Start()
     {
+        Checkpoits.Add(GameObject.FindGameObjectWithTag("Player").transform.position);
         //PauseMenu.SetActive(false);
         diamondSlider.value = 0;
         for (int i = 0; i < letters.Length; i++)
@@ -59,16 +64,34 @@ public class GameManager : MonoBehaviour
         letters[id].color = color;
         PlayerPrefs.SetInt("Letter" + id, 1);
     }
+    private void AddCheckPoint(Vector3 checkpoint)
+    {
+        Checkpoits.Add(checkpoint);
+    }
+    private void Die()
+    {
+        Debug.Log("Hola");
+        diamondSlider.value = 0;
+        GameObject.FindWithTag("Player").transform.position = Checkpoits[Checkpoits.Count - 1];
+    }
 
     public void OnEnable()
     {
         Diamond.collectDiamond += AddDiamond;
         Letter.collectLetter += AddLetter;
+        CheckPoint.OnCheckPoint += AddCheckPoint;
+        HealthController.OnDead += Die;
     }
+
+    
+
     private void OnDisable()
     {
         Diamond.collectDiamond -= AddDiamond;
         Letter.collectLetter -= AddLetter;
+        CheckPoint.OnCheckPoint -= AddCheckPoint;
+        HealthController.OnDead -= Die;
     }
+
 
 }

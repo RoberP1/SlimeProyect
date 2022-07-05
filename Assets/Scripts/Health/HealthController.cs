@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,12 @@ public class HealthController : MonoBehaviour
     public bool diamondSliderFull = false;
     public int MaxHealth;
     public int Health;
-
+    public static Action OnDead;
 
     void Start()
     {
         health = GetComponentsInChildren<Heart>();
+        OnDead += ResetHealth;
     }
     
     public void LoseHealth()
@@ -32,12 +34,23 @@ public class HealthController : MonoBehaviour
         Health--;
         health[i].state--;
         health[i].SetSprite();
+
         canTakeDamage = false;
         if (diamondSliderFull)
         {
             Heal();
         }
 
+        if (Health <= 0)
+        {
+            
+            OnDead?.Invoke();
+        }
+
+    }
+    public void InstaDead()
+    {
+        OnDead?.Invoke();
     }
     public void Heal()
     {
@@ -55,6 +68,17 @@ public class HealthController : MonoBehaviour
         health[i].SetSprite();
         diamondSlider.value = 0;
         diamondSliderFull = false;
+    }
+    public void ResetHealth()
+    {
+        Health = MaxHealth;
+
+        foreach (var heart in health)
+        {
+            heart.state = 2;
+            heart.SetSprite();
+        }
+
     }
 
     public void OnEnable()
