@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         OnPauseId = Animator.StringToHash("OnPause");
+
     }
     private void OnEnable()
     {

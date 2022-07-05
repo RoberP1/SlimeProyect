@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public static event Action OnPause;
     void Start()
     {
+        //PauseMenu.SetActive(false);
         diamondSlider.value = 0;
         for (int i = 0; i < letters.Length; i++)
         {
