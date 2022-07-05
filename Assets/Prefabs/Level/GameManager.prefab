@@ -185,7 +185,7 @@ MonoBehaviour:
   - {fileID: 6086779604846127818}
   - {fileID: 6086779605286142093}
   - {fileID: 6086779604565891952}
-  PauseMenu: {fileID: 8625834157743063925}
+  Checkpoits: []
 --- !u!1 &6074955098453758977
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,8 +544,8 @@ MonoBehaviour:
   diamondSlider: {fileID: 0}
   canTakeDamage: 1
   diamondSliderFull: 0
-  MaxHealth: 0
-  Health: 0
+  MaxHealth: 6
+  Health: 6
 --- !u!1 &6074955099524846538
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,11 +801,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3a283417c0e10944b0c6edb1078ea73, type: 3}
---- !u!1 &8625834157743063925 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7310310237819858200, guid: f3a283417c0e10944b0c6edb1078ea73, type: 3}
-  m_PrefabInstance: {fileID: 1352889800391372397}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6123016660993612051 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5061831770958280574, guid: f3a283417c0e10944b0c6edb1078ea73, type: 3}
@@ -816,7 +811,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7876341967196268257, guid: f3a283417c0e10944b0c6edb1078ea73, type: 3}
   m_PrefabInstance: {fileID: 1352889800391372397}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625834157743063925}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b72c983b3f8d2d6448f35943f65df444, type: 3}

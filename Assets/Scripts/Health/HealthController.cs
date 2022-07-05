@@ -84,6 +84,7 @@ public class HealthController : MonoBehaviour
     public void OnEnable()
     {
         Player.OnTakeDamage += LoseHealth;
+        Player.OnInstaDead += InstaDead;
         Player.OnHitFinish += () => canTakeDamage = true;
         GameManager.OnDiamondSliderFull += Heal;
         GameManager.OnDiamondSliderFull += () => diamondSliderFull = true;
@@ -92,6 +93,7 @@ public class HealthController : MonoBehaviour
     {
         Player.OnTakeDamage -= LoseHealth;
         GameManager.OnDiamondSliderFull -= Heal;
+        Player.OnInstaDead -= InstaDead;
     }
 
 }

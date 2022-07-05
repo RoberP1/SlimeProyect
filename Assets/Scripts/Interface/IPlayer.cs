@@ -7,4 +7,5 @@ public interface IPlayer
     public void SlimeActive(float force);
     public void SlimeDamage(float DamageForceX, float DamageForceY);
     public void FlyCollition();
+    public void InstaKillDamage();
 }

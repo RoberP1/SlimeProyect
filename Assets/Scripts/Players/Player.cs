@@ -32,6 +32,7 @@ public class Player : MonoBehaviour,IPlayer
 
     public static event Action OnTakeDamage;
     public static event Action OnHitFinish;
+    public static event Action OnInstaDead;
 
 
     protected virtual void Start()
@@ -178,5 +179,10 @@ public class Player : MonoBehaviour,IPlayer
     public void FlyCollition()
     {
         IsGraunded();
+    }
+
+    public void InstaKillDamage()
+    {
+        OnInstaDead?.Invoke();
     }
 }
