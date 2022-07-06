@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PauseMenu : MonoBehaviour
 {
+    public static event Action<GameManager.States> OnUnpause;
     Animator anim;
     int OnPauseId;
     void Start()
@@ -35,5 +37,6 @@ public class PauseMenu : MonoBehaviour
     public void AnimationFinish()
     {
         anim.SetBool(OnPauseId, false);
+        OnUnpause?.Invoke(GameManager.States.Playing);
     }
 }

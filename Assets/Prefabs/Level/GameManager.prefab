@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f98fdc5bd0d8cc4cb2b1c1b447dcca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   diamondSlider: {fileID: 6074955098459543064}
   color: {r: 1, g: 1, b: 1, a: 1}
   letters:
@@ -798,6 +799,10 @@ PrefabInstance:
     - target: {fileID: 7310310237819858200, guid: f3a283417c0e10944b0c6edb1078ea73, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169569027179069393, guid: f3a283417c0e10944b0c6edb1078ea73, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3a283417c0e10944b0c6edb1078ea73, type: 3}

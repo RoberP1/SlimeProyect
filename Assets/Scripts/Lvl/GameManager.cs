@@ -7,7 +7,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    
+    public enum States
+    {
+        Playing,
+        Pause
+    }
+    public States state;
+
     public static event Action OnDiamondSliderFull;
     [Header("Diamonds")]
     [SerializeField] private Slider diamondSlider;
@@ -42,7 +48,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown("p"))
         {
-            OnPause?.Invoke();
+            ChangeState(States.Pause);
         }
     }
 
@@ -75,12 +81,29 @@ public class GameManager : MonoBehaviour
         GameObject.FindWithTag("Player").transform.position = Checkpoits[Checkpoits.Count - 1];
     }
 
+    public void ChangeState(States newState)
+    {
+        state = newState;
+        switch (state)
+        {
+            case States.Playing:
+                Time.timeScale = 1;
+                break;
+            case States.Pause:
+                OnPause?.Invoke();
+                break;
+            default:
+                break;
+        }
+    }
     public void OnEnable()
     {
         Diamond.collectDiamond += AddDiamond;
         Letter.collectLetter += AddLetter;
         CheckPoint.OnCheckPoint += AddCheckPoint;
         HealthController.OnDead += Die;
+        OnPause += () => Time.timeScale = 0;
+        PauseMenu.OnUnpause += ChangeState;
     }
 
     
@@ -91,6 +114,7 @@ public class GameManager : MonoBehaviour
         Letter.collectLetter -= AddLetter;
         CheckPoint.OnCheckPoint -= AddCheckPoint;
         HealthController.OnDead -= Die;
+        PauseMenu.OnUnpause -= ChangeState;
     }
 
 
