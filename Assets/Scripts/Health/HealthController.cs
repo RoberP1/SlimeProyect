@@ -19,7 +19,10 @@ public class HealthController : MonoBehaviour
         health = GetComponentsInChildren<Heart>();
         OnDead += ResetHealth;
     }
-    
+    private void OnDestroy()
+    {
+        OnDead -= ResetHealth;
+    }
     public void LoseHealth()
     {
         if (!canTakeDamage) return;
