@@ -163,6 +163,7 @@ public class Player : MonoBehaviour,IPlayer
     {
         Knocked();
         rb.velocity = (isRotated) ? new Vector2(DamageForceX, DamageForceY) : new Vector2(-DamageForceX, DamageForceY);
+        Debug.Log("Damage");
         OnTakeDamage?.Invoke();
     }
 
@@ -175,4 +176,18 @@ public class Player : MonoBehaviour,IPlayer
     {
         OnInstaDead?.Invoke();
     }
+    public void Die()
+    {
+        Debug.Log("Dead");
+        rb.velocity = Vector3.zero;
+    }
+    private void OnEnable()
+    {
+        HealthController.OnDead+=Die;
+    }
+    private void OnDisable()
+    {
+        HealthController.OnDead -= Die;
+    }
+       
 }
