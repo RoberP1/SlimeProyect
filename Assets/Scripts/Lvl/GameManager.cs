@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     public void AddLetter(int id)
     {
         letters[id].color = color;
-        PlayerPrefs.SetInt("Letter" + id, 1);
+        //PlayerPrefs.SetInt("Letter" + id, 1);
     }
     private void AddCheckPoint(Vector3 checkpoint)
     {
