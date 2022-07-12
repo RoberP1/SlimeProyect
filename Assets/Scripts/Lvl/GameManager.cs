@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         {
             diamondSlider.value++;
         }
-        else
+        if (diamondSlider.value == diamondSlider.maxValue)
         {
             OnDiamondSliderFull?.Invoke();
         }

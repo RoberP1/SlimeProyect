@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: []
-  diamondSlider: {fileID: 0}
+  diamondSlider: {fileID: 6074955098459543064}
   canTakeDamage: 1
   diamondSliderFull: 0
   MaxHealth: 6
