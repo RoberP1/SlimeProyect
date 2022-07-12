@@ -106,16 +106,6 @@ public class Player : MonoBehaviour,IPlayer
         HitFinish();
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Pinchos"))
-        {
-            // Ta Mal escrito, pero no se si puedo cambiarlo sin que pase algo malo en el git
-            //SceneManager.LoadScene("LevelDisgn");
-
-            OnTakeDamage?.Invoke();
-        }
-    }
     protected virtual void OnCollisionStay2D(Collision2D collision)
     {
         if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))

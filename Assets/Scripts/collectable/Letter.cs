@@ -15,6 +15,7 @@ public class Letter : MonoBehaviour, ICollectionable
             Debug.Log("No aparezco");
             Destroy(gameObject);
         }
+
     }
     public void Collect()
     {
