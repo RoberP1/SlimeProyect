@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prefabs/Scenes/FinalLevel.unity
     guid: 1224e56076cdcf844aa85e14b0ed2260
+  - enabled: 1
+    path: Assets/Prefabs/Scenes/Victory.unity
+    guid: 5bf054658345c1846acc7376be2a93da
   m_configObjects: {}

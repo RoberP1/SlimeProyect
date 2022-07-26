@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -70,6 +71,7 @@ public class Boss : MonoBehaviour
         if (health <= 0)
         {
             animator.SetBool(DeadID, true);
+            GetComponent<Collider2D>().enabled = false;
         }
         fireNumber = maxHealth - health + 1;
     }
@@ -82,6 +84,11 @@ public class Boss : MonoBehaviour
     {
         CanTakeDamage = !CanTakeDamage;
     }
+    public void Victory()
+    {
+        SceneManager.LoadScene("Victory");
+    }
+        
 
     private void SetAnimationId()
     {
