@@ -66,6 +66,4 @@ public class Lvl3Player : Lvl2Player
         base.Knocked();
         DashFinish();
     }
-
-
 }

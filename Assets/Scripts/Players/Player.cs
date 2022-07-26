@@ -49,6 +49,10 @@ public class Player : MonoBehaviour,IPlayer
 
     protected virtual void Update()
     {
+        if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
+        {
+            IsGraunded();
+        }
         if (knocked)
         {
             GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
@@ -108,10 +112,7 @@ public class Player : MonoBehaviour,IPlayer
 
     protected virtual void OnCollisionStay2D(Collision2D collision)
     {
-        if (Physics2D.Raycast(transform.position, Vector2.down, rayCastDistance, graund))
-        {
-            IsGraunded();
-        }
+
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

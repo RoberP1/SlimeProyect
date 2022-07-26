@@ -240,11 +240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5775337
+      value: 0.5775366
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.204889
+      value: -7.2048426
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6513,6 +6513,10 @@ PrefabInstance:
     - target: {fileID: 6004993836674512792, guid: a9cea23587d4b2f41b8c693e92139c78, type: 3}
       propertyPath: m_Name
       value: Player lvl 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004993836674512795, guid: a9cea23587d4b2f41b8c693e92139c78, type: 3}
+      propertyPath: rayCastDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6004993836674512796, guid: a9cea23587d4b2f41b8c693e92139c78, type: 3}
       propertyPath: m_SortingLayer
