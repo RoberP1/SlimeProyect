@@ -32,14 +32,15 @@ public class Boss : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        IPlayer Player = collision.GetComponent<IPlayer>();
+        if (Player == null) return;
         if (CanTakeDamage)
         {
             TakeDamage();
         }
         else
         {
-            IPlayer Player = collision.GetComponent<IPlayer>();
-            Player?.InstaKillDamage();
+            Player.InstaKillDamage();
         }
     }
 
@@ -47,14 +48,14 @@ public class Boss : MonoBehaviour
     {
         if (fireNumber > 0)
         {
-            GameObject proyectile = Instantiate(ProyectilePreFab, transform.position, Quaternion.identity);
-            proyectile.GetComponent<Rigidbody2D>().velocity = (player.position - transform.position) * ProyectileVelocity;
+            GameObject proyectile = Instantiate(ProyectilePreFab, transform.position , Quaternion.identity);
+            proyectile.GetComponent<Rigidbody2D>().velocity = (player.position - (transform.position)) * ProyectileVelocity;
             animator.SetBool(AttackID, true);
             fireNumber--;
         }
         else
         {
-            fireNumber = maxHealth - health;
+            fireNumber = maxHealth - health + 1;
             animator.SetBool(AttackID, false);
         }
     }
