@@ -54,6 +54,7 @@ public class Boss : MonoBehaviour
         {
             GameObject proyectile = Instantiate(ProyectilePreFab, transform.position , Quaternion.identity);
             proyectile.GetComponent<Rigidbody2D>().velocity = (player.position - (transform.position)) * ProyectileVelocity;
+            Destroy(proyectile, 10);
             animator.SetBool(AttackID, true);
             fireNumber--;
         }
