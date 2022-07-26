@@ -15,6 +15,8 @@ public class Boss : MonoBehaviour
     [SerializeField] GameObject ProyectilePreFab;
     [SerializeField] float ProyectileVelocity;
     [SerializeField] int fireNumber;
+
+    [SerializeField] float jumpForce;
     //animations
     private Animator animator;
     private int HitID;
@@ -36,6 +38,7 @@ public class Boss : MonoBehaviour
         if (Player == null) return;
         if (CanTakeDamage)
         {
+            Player.SlimeActive(jumpForce);
             TakeDamage();
         }
         else
@@ -53,7 +56,7 @@ public class Boss : MonoBehaviour
             animator.SetBool(AttackID, true);
             fireNumber--;
         }
-        else
+        if (fireNumber <= 0)
         {
             fireNumber = maxHealth - health + 1;
             animator.SetBool(AttackID, false);
@@ -68,10 +71,16 @@ public class Boss : MonoBehaviour
         {
             animator.SetBool(DeadID, true);
         }
+        fireNumber = maxHealth - health + 1;
     }
     public void FinishDamageAnimation()
     {
         animator.SetBool(HitID, false);
+
+    }
+    public void cantakeDamage()
+    {
+        CanTakeDamage = !CanTakeDamage;
     }
 
     private void SetAnimationId()

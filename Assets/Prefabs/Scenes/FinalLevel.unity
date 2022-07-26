@@ -240,11 +240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5775337
+      value: 0.5775366
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.204889
+      value: -7.2048426
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6066,31 +6066,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2005210938, guid: cab7438ed828f1647a1d974cfe81111a, type: 3}
       propertyPath: health
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2005210938, guid: cab7438ed828f1647a1d974cfe81111a, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2005210938, guid: cab7438ed828f1647a1d974cfe81111a, type: 3}
       propertyPath: CanTakeDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2005210938, guid: cab7438ed828f1647a1d974cfe81111a, type: 3}
-      propertyPath: ProyectileVelocity
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2947845471148771676, guid: cab7438ed828f1647a1d974cfe81111a, type: 3}
       propertyPath: m_Name
       value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 2947845471148771678, guid: cab7438ed828f1647a1d974cfe81111a, type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2947845471148771678, guid: cab7438ed828f1647a1d974cfe81111a, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1481823311
       objectReference: {fileID: 0}
     - target: {fileID: 2947845471148771679, guid: cab7438ed828f1647a1d974cfe81111a, type: 3}
       propertyPath: m_RootOrder
