@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2947845471148771679}
   - component: {fileID: 2947845471148771678}
   - component: {fileID: 2947845471148771677}
-  - component: {fileID: 8157578665629376032}
+  - component: {fileID: 2005210937}
+  - component: {fileID: 2005210938}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -103,8 +104,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &8157578665629376032
-CircleCollider2D:
+--- !u!70 &2005210937
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -116,6 +117,24 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -4.32}
-  serializedVersion: 2
-  m_Radius: 4.1
+  m_Offset: {x: 0, y: -3.9}
+  m_Size: {x: 8.42, y: 7.22}
+  m_Direction: 1
+--- !u!114 &2005210938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2947845471148771676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216d9f2412e683b4a81b48e1a0f0ee85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  CanTakeDamage: 0
+  ProyectilePreFab: {fileID: 3532091797091342247, guid: 52ce5ba9e536c5c48b5ac2b3cf09b32e, type: 3}
+  ProyectileVelocity: 0
+  fireNumber: 0
