@@ -15354,17 +15354,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
+    - target: {fileID: 5713897218856336508, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
+      propertyPath: orthographic size
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4856615
+      value: 6.6389074
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.6417985
       objectReference: {fileID: 0}
     - target: {fileID: 5713897219584422532, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1825156294}
+    - target: {fileID: 5713897219584422532, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5713897219584422539, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.500003
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713897219584422539, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.8399997
       objectReference: {fileID: 0}
     - target: {fileID: 9023120978237574825, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_RootOrder
