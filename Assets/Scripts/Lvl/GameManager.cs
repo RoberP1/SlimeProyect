@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -76,8 +77,12 @@ public class GameManager : MonoBehaviour
     }
     private void Die()
     {
-        Debug.Log("Hola");
         diamondSlider.value = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //GameObject.FindWithTag("Player").transform.position = Checkpoits[Checkpoits.Count - 1];
+    }
+    private void Checkpoint()
+    {
         GameObject.FindWithTag("Player").transform.position = Checkpoits[Checkpoits.Count - 1];
     }
 
@@ -98,6 +103,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnEnable()
     {
+        Player.OnInstaDead += Checkpoint;
         Diamond.collectDiamond += AddDiamond;
         Letter.collectLetter += AddLetter;
         CheckPoint.OnCheckPoint += AddCheckPoint;
@@ -110,6 +116,7 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
+        Player.OnInstaDead -= Checkpoint;
         Diamond.collectDiamond -= AddDiamond;
         Letter.collectLetter -= AddLetter;
         CheckPoint.OnCheckPoint -= AddCheckPoint;

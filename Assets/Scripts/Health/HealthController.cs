@@ -51,9 +51,46 @@ public class HealthController : MonoBehaviour
         }
 
     }
+
+    public void LoseHealth(int damage)
+    {
+        
+        if (!canTakeDamage) return;
+        while (damage > 0)
+        {
+            int i = 0;
+            for (i = health.Length - 1; i >= 0; i--)
+            {
+                if (health[i].state > 0)
+                {
+                    break;
+                }
+            }
+            Health--;
+            health[i].state--;
+            health[i].SetSprite();
+
+            damage--;
+            if (diamondSliderFull)
+            {
+                Heal();
+            }
+
+            if (Health <= 0)
+            {
+
+                OnDead?.Invoke();
+            }
+        }
+        
+        canTakeDamage = false;
+
+
+    }
     public void InstaDead()
     {
-        OnDead?.Invoke();
+        //OnDead?.Invoke();
+        LoseHealth(2);
     }
     public void Heal()
     {
