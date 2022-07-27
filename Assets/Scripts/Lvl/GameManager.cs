@@ -52,6 +52,10 @@ public class GameManager : MonoBehaviour
         {
             ChangeState(States.Pause);
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("CLick");
+        }
     }
 
     public void AddDiamond()
