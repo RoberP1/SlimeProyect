@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 public class PauseMenu : MonoBehaviour
@@ -38,5 +39,9 @@ public class PauseMenu : MonoBehaviour
     {
         anim.SetBool(OnPauseId, false);
         OnUnpause?.Invoke(GameManager.States.Playing);
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

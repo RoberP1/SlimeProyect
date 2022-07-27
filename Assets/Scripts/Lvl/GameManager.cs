@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        ChangeState(States.Playing);
         Checkpoits.Add(GameObject.FindGameObjectWithTag("Player").transform.position);
         //PauseMenu.SetActive(false);
         diamondSlider.value = 0;
@@ -101,6 +102,10 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+    void Pause()
+    {
+        Time.timeScale = 0;
+    }
     public void OnEnable()
     {
         Player.OnInstaDead += Checkpoint;
@@ -108,7 +113,7 @@ public class GameManager : MonoBehaviour
         Letter.collectLetter += AddLetter;
         CheckPoint.OnCheckPoint += AddCheckPoint;
         HealthController.OnDead += Die;
-        OnPause += () => Time.timeScale = 0;
+        OnPause += Pause;
         PauseMenu.OnUnpause += ChangeState;
     }
 
@@ -122,6 +127,7 @@ public class GameManager : MonoBehaviour
         CheckPoint.OnCheckPoint -= AddCheckPoint;
         HealthController.OnDead -= Die;
         PauseMenu.OnUnpause -= ChangeState;
+        OnPause -= Pause;
     }
 
 

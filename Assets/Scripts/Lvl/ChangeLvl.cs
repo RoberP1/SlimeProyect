@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class ChangeLvl : MonoBehaviour
 {
     private List<int> LetterIds = new List<int>();
+    int lvlsUnlocked;
+    int buildIndex;
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<IPlayer>() != null)
@@ -13,6 +16,13 @@ public class ChangeLvl : MonoBehaviour
             foreach (var LetterId in LetterIds)
             {
                 AddLetter(LetterId);
+            }
+            lvlsUnlocked= PlayerPrefs.GetInt("UnlockedLevel", 1);
+            buildIndex = SceneManager.GetActiveScene().buildIndex;
+            Debug.Log(lvlsUnlocked);
+            if (buildIndex <= lvlsUnlocked)
+            {
+                PlayerPrefs.SetInt("UnlockedLevel", buildIndex+1);
             }
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

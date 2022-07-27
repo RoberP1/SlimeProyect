@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 16
-  rayCastDistance: 1.1
+  rayCastDistance: 1.08
   maxJump: 1
   jump: 0
   graund:

@@ -1,40 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public string levelChange;
+    [SerializeField] private Button[] buttons;
+    int lvlsUnlocked;
 
-    string Level;
-    [SerializeField] GameObject Levels, MenuPrincipal;
-
-    public void EscenaJuego()
+    private void Start()
     {
-        SceneManager.LoadScene(levelChange);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("escape"))
+        lvlsUnlocked= PlayerPrefs.GetInt("UnlockedLevel", 1);
+        for (int i = 0; i < lvlsUnlocked; i++)
         {
-            Cursor.lockState = CursorLockMode.None;
+            if(i < buttons.Length)
+            buttons[i].interactable = true;
         }
     }
-
-    public void ShowLevels()
-    {
-        Levels.SetActive(true);
-        MenuPrincipal.SetActive(false);
-    }
-
-    public void ShowMenu()
-    {
-        Levels.SetActive(false);
-        MenuPrincipal.SetActive(true);
-    }
-
     public void ChangeLevel(string Level)
     {
         SceneManager.LoadScene(Level);
