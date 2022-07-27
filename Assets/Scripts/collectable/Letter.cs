@@ -7,6 +7,7 @@ public class Letter : MonoBehaviour, ICollectionable
 {
     public int id;
     public static event Action<int> collectLetter;
+    [SerializeField] private AudioClip collectClip;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class Letter : MonoBehaviour, ICollectionable
     public void Collect()
     {
         collectLetter?.Invoke(id);
+        AudioSource.PlayClipAtPoint(collectClip, transform.position, 1);
         Destroy(gameObject);
     }
 }

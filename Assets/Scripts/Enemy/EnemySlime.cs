@@ -11,9 +11,12 @@ public class EnemySlime : MonoBehaviour
     [SerializeField] float DamageForceX;
     [SerializeField] float DamageForceY;
 
-
+    AudioSource audioSource;
+    [SerializeField] AudioClip jumpClip;
+    [SerializeField] AudioClip damageClip;
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         collisionPlayerID = Animator.StringToHash("collisionPlayer");
     }
@@ -28,9 +31,12 @@ public class EnemySlime : MonoBehaviour
             {
                 animator.SetBool(collisionPlayerID, true);
                 player.SlimeActive(jumpForce);
+                audioSource.PlayOneShot(jumpClip);
+
             }
             else
             {
+                audioSource.PlayOneShot(damageClip);
                 player.SlimeDamage(DamageForceX, DamageForceY);
             }  
         }

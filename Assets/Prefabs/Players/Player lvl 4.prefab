@@ -200,10 +200,13 @@ MonoBehaviour:
     m_Bits: 64
   isJumping: 0
   animator: {fileID: 0}
+  jumpClip: {fileID: 0}
+  takeDamgeClip: {fileID: 0}
   dashImpulse: 10
   dashCD: 1
   candash: 1
   isDashing: 0
+  dashClip: {fileID: 0}
   wallGrabPoint: {fileID: 6004993836961856574}
   IsGrabbing: 0
   wallJumpTime: 0.2
@@ -237,7 +240,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

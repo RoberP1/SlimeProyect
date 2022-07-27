@@ -8,6 +8,7 @@ public class EnemyFly : MonoBehaviour
     bool flyActive = true;
     Animator anim;
     private int animTrigger;
+    [SerializeField] private AudioClip flyClip;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -22,6 +23,7 @@ public class EnemyFly : MonoBehaviour
             player.FlyCollition();
             flyActive = false;
             anim.SetBool(animTrigger, true);
+            AudioSource.PlayClipAtPoint(flyClip, transform.position);
         }
     }
     public void animationFinish()
