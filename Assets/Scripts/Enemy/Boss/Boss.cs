@@ -70,7 +70,7 @@ public class Boss : MonoBehaviour
         health--;
         if (hearts.Length > 0)
         {
-            hearts[health].SetActive(false);
+            hearts[hearts.Length - health -1].SetActive(false);
         }
         if (health <= 0)
         {
