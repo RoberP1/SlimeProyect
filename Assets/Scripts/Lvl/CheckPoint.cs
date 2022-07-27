@@ -10,6 +10,7 @@ public class CheckPoint : MonoBehaviour
     private int id;
     public static event Action<Vector3> OnCheckPoint;
 
+    [SerializeField] private AudioClip checkPointClip;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -20,6 +21,7 @@ public class CheckPoint : MonoBehaviour
         IPlayer player = collision.GetComponent<IPlayer>();
         if (player != null)
         {
+            AudioSource.PlayClipAtPoint(checkPointClip, transform.position);
             OnCheckPoint?.Invoke(transform.position);
             GetComponent<Collider2D>().enabled = false;
             animator.SetTrigger(id);
