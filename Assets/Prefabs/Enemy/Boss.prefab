@@ -141,6 +141,9 @@ MonoBehaviour:
   ProyectileVelocity: 1
   fireNumber: 1
   jumpForce: 25
+  shootClip: {fileID: 8300000, guid: de3e724eb2b42b14eae6aa7681bc4228, type: 3}
+  takeDamageClip: {fileID: 8300000, guid: 3453421d1119edf429f74de6f629cc59, type: 3}
+  deadClip: {fileID: 8300000, guid: fc084421d13865e47a7ca08377afdd46, type: 3}
 --- !u!82 &3104734047258648167
 AudioSource:
   m_ObjectHideFlags: 0

@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef02ddc30e69564fa0cac82e0b46777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flyClip: {fileID: 8300000, guid: 8acf15f725b043d4e937e63ae6ca9a8b, type: 3}
 --- !u!61 &9018923044948425756
 BoxCollider2D:
   m_ObjectHideFlags: 0

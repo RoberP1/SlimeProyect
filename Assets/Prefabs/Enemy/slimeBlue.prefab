@@ -121,8 +121,8 @@ MonoBehaviour:
   active: 1
   DamageForceX: 10
   DamageForceY: 10
-  jumpClip: {fileID: 0}
-  damageClip: {fileID: 0}
+  jumpClip: {fileID: 8300000, guid: 3453421d1119edf429f74de6f629cc59, type: 3}
+  reActiveClip: {fileID: 8300000, guid: ca789f5a736e2984ea364d054e71186a, type: 3}
 --- !u!61 &6080671035573490951
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -393,11 +393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5775356
+      value: 0.5775366
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.2049437
+      value: -7.2048473
       objectReference: {fileID: 0}
     - target: {fileID: 5713897218856336515, guid: 9090af00d85d35b4a9ad5ed55c47b53d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7006,6 +7006,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2658197743739335992, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bb92cc7cf0768f0458917cf5cb715490, type: 3}
+    - target: {fileID: 5261958511740219291, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261958511740219291, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261958511740219291, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261958512981650653, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261958512981650653, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6074955097695472533, guid: 09a80be7af2383e408239598c8c77fa4, type: 3}
       propertyPath: m_RootOrder
       value: 4

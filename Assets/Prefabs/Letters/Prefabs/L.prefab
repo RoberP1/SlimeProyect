@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2507424260765610709}
   - component: {fileID: 1877202982409661367}
   m_Layer: 0
-  m_Name: l
+  m_Name: L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
+  collectClip: {fileID: 8300000, guid: 6b150da43c044d4479113eee4a6f8d48, type: 3}
