@@ -29,6 +29,12 @@ public class Player : MonoBehaviour,IPlayer
     int jumpID;
     int hitID;
 
+    [Header("Audio")]
+    protected AudioSource audioSource;
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip takeDamgeClip;
+
+    
 
     public static event Action OnTakeDamage;
     public static event Action OnHitFinish;
@@ -37,6 +43,8 @@ public class Player : MonoBehaviour,IPlayer
 
     protected virtual void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         animator = GetComponent<Animator>();
         walkID = Animator.StringToHash("Walk");
         jumpID = Animator.StringToHash("Jump");
@@ -93,7 +101,8 @@ public class Player : MonoBehaviour,IPlayer
 
         if (Input.GetButtonDown("Jump") && jump < maxJump)
         {
-            
+            audioSource.clip = jumpClip;
+            audioSource.Play();
             rb.velocity = jumpDirection * jumpForce;
             jump++;
             isJumping = true;
@@ -140,6 +149,9 @@ public class Player : MonoBehaviour,IPlayer
         maxJump = playerScriptableObject.maxJump;
         jump = playerScriptableObject.jump;
         graund = playerScriptableObject.graund;
+
+        jumpClip = playerScriptableObject.jumpClip;
+        takeDamgeClip = playerScriptableObject.takeDamgeClip;
     }
 
     //draw line
@@ -171,6 +183,8 @@ public class Player : MonoBehaviour,IPlayer
 
     public void SlimeDamage(float DamageForceX,float DamageForceY)
     {
+        audioSource.clip = takeDamgeClip;
+        audioSource.Play();
         Knocked();
         rb.velocity = (isRotated) ? new Vector2(DamageForceX, DamageForceY) : new Vector2(-DamageForceX, DamageForceY);
         Debug.Log("Damage");
@@ -184,6 +198,8 @@ public class Player : MonoBehaviour,IPlayer
 
     public void InstaKillDamage()
     {
+        audioSource.clip = takeDamgeClip;
+        audioSource.Play();
         OnInstaDead?.Invoke();
     }
     public void Die()

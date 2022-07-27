@@ -21,4 +21,10 @@ public class PlayerScriptableObject : ScriptableObject
     [Header("Dash")]
     [SerializeField] public float dashImpulse;
     [SerializeField] public float dashCD;
+
+    [Header("Audio")]
+    [SerializeField] public AudioClip jumpClip;
+    [SerializeField] public AudioClip takeDamgeClip;
+    [SerializeField] public AudioClip dashClip;
+    
 }

@@ -10,8 +10,10 @@ public class Lvl3Player : Lvl2Player
     [SerializeField] protected float dashCD;
     [SerializeField] protected bool candash;
     [SerializeField] protected bool isDashing;
+    [SerializeField] private AudioClip dashClip;
     int dashID;
 
+    
     protected override void Start()
     {
         base.Start();
@@ -32,6 +34,8 @@ public class Lvl3Player : Lvl2Player
             StartCoroutine(DashCD(dashCD));
             isDashing = true;
             animator.SetBool(dashID, isDashing);
+            audioSource.clip = dashClip;
+            audioSource.Play();
         }
         if (isDashing)
         {
@@ -51,6 +55,7 @@ public class Lvl3Player : Lvl2Player
         base.SetPlayer();
         dashImpulse = playerScriptableObject.dashImpulse;
         dashCD = playerScriptableObject.dashCD;
+        dashClip = playerScriptableObject.dashClip;
     }
 
     //animation events
