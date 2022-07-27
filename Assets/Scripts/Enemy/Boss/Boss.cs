@@ -9,9 +9,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private int maxHealth;
     public bool CanTakeDamage;
+    public GameObject[] hearts;
 
-
-    
     [Header("Attack")]
     [SerializeField] GameObject ProyectilePreFab;
     [SerializeField] float ProyectileVelocity;
@@ -69,6 +68,10 @@ public class Boss : MonoBehaviour
     {
         animator.SetBool(HitID, true);
         health--;
+        if (hearts.Length > 0)
+        {
+            hearts[health].SetActive(false);
+        }
         if (health <= 0)
         {
             animator.SetBool(DeadID, true);
