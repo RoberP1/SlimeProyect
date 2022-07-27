@@ -25,8 +25,17 @@ public class Boss : MonoBehaviour
 
     private Transform player;
 
+    [Header("Audio")]
+    AudioSource audioSource;
+    [SerializeField] AudioClip shootClip;
+    [SerializeField] AudioClip takeDamageClip;
+    [SerializeField] AudioClip deadClip;
+
+    
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         player = GameObject.FindWithTag("Player").transform;
         animator = GetComponent<Animator>();
         health = maxHealth;
@@ -51,6 +60,7 @@ public class Boss : MonoBehaviour
     {
         if (fireNumber > 0)
         {
+            audioSource.PlayOneShot(shootClip);
             GameObject proyectile = Instantiate(ProyectilePreFab, transform.position , Quaternion.identity);
             proyectile.GetComponent<Rigidbody2D>().velocity = (player.position - (transform.position)) * ProyectileVelocity;
             Destroy(proyectile, 10);
@@ -68,12 +78,14 @@ public class Boss : MonoBehaviour
     {
         animator.SetBool(HitID, true);
         health--;
+        audioSource.PlayOneShot(takeDamageClip);
         if (hearts.Length > 0)
         {
             hearts[hearts.Length - health -1].SetActive(false);
         }
         if (health <= 0)
         {
+            audioSource.PlayOneShot(deadClip);
             animator.SetBool(DeadID, true);
             GetComponent<Collider2D>().enabled = false;
         }

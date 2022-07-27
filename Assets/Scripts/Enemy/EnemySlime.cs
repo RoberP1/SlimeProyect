@@ -13,7 +13,7 @@ public class EnemySlime : MonoBehaviour
 
     AudioSource audioSource;
     [SerializeField] AudioClip jumpClip;
-    [SerializeField] AudioClip damageClip;
+    [SerializeField] AudioClip reActiveClip;
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -36,7 +36,7 @@ public class EnemySlime : MonoBehaviour
             }
             else
             {
-                audioSource.PlayOneShot(damageClip);
+                
                 player.SlimeDamage(DamageForceX, DamageForceY);
             }  
         }
@@ -50,5 +50,10 @@ public class EnemySlime : MonoBehaviour
     {
         animator.SetBool(collisionPlayerID, false);
         active = true;
+        
+    }
+    public void Audio()
+    {
+        audioSource.PlayOneShot(reActiveClip);
     }
 }
