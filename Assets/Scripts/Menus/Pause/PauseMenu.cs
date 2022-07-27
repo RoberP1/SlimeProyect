@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
@@ -10,8 +11,10 @@ public class PauseMenu : MonoBehaviour
     public static event Action<GameManager.States> OnUnpause;
     Animator anim;
     int OnPauseId;
+    public Slider Vol;
     void Start()
     {
+        Vol.value = PlayerPrefs.GetFloat("vol", 1);
         anim = GetComponent<Animator>();
         OnPauseId = Animator.StringToHash("OnPause");
 
@@ -43,5 +46,10 @@ public class PauseMenu : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void ChangeVolume()
+    {
+        AudioListener.volume = Vol.value;
+        PlayerPrefs.SetFloat("vol", Vol.value);
     }
 }
