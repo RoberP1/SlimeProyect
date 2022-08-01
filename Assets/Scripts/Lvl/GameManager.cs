@@ -44,11 +44,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         if (Input.GetKeyDown("r"))
         {
             PlayerPrefs.DeleteAll();
-        }*/
+        }
         if (Input.GetKeyDown("p"))
         {
             ChangeState(States.Pause);

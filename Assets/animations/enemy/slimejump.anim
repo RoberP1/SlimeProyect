@@ -419,7 +419,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.25
+  - time: 2.1666667
     functionName: AnimationJumpFinish
     data: 
     objectReferenceParameter: {fileID: 0}
