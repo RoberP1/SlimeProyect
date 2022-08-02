@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     }
     private void Checkpoint()
     {
-        GameObject.FindWithTag("Player").transform.position = Checkpoits[Checkpoits.Count - 1];
+        FindObjectOfType<Player>().transform.position = Checkpoits[Checkpoits.Count - 1];
     }
 
     public void ChangeState(States newState)
