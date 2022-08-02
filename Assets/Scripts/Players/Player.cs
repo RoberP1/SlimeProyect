@@ -98,7 +98,6 @@ public class Player : MonoBehaviour,IPlayer
     protected virtual void Jump()
     {
 
-
         if (Input.GetButtonDown("Jump") && jump < maxJump)
         {
             audioSource.clip = jumpClip;
